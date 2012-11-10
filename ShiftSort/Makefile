@@ -2,7 +2,7 @@ INC = ../include
 
 XCFLAGS = -I$(INC) ## extra C flags
 
-CC = gcc $(XCFLAGS)
+CC = gcc -pg $(XCFLAGS)
 
 driver: driver.o ShiftSort.o LineStorage.o WordTable.o
 	$(CC) -o driver driver.o ShiftSort.o LineStorage.o WordTable.o

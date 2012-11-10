@@ -3,7 +3,7 @@ INC = ../include
 XCFLAGS = -I$(INC) ## extra C flags
 CFLAGS = -g	## a suitable option for the runtest
 
-CC = gcc $(XCFLAGS)
+CC = gcc -pg $(XCFLAGS)
 
 driver: driver.o WordTable.o
 	$(CC) -o driver driver.o WordTable.o
