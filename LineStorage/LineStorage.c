@@ -68,7 +68,7 @@ static int currentPower = 0;
 *	return NULL
 * Assumed: the state invariant holds
 */
-int ipow(int base, int exp)
+static int ipow(int base, int exp)
 {
     int result = 1;
     while (exp)
