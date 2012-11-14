@@ -19,6 +19,8 @@ typedef struct {
 
 static LineListPtr lineList;
 static int lineCount;
+static int currentSize;
+static int currentPower;
 
 /***** state invariant *****
 
@@ -39,7 +41,7 @@ static int lineCount;
 /***** local functions *****/
 
 /* return word wordNum from the shifted LineStorage line specified by linePtr */
-static const char* getWord(LineListPtr linePtr,int wordNum)
+const char* SSNATIVEGETWORD(LineListPtr linePtr,int wordNum)
 {
         int shiftedWordNum;
 
@@ -56,29 +58,49 @@ static const char* getWord(LineListPtr linePtr,int wordNum)
 * else
 *       return a positive value
 */
-static int lineCompare(LineListPtr line0,LineListPtr line1)
+int lineCompare(LineListPtr line0,LineListPtr line1)
 {
         int i,j,minNumWords,minLine;
-
-        if (LSNumWords(line0->lineNum) < LSNumWords(line1->lineNum))
-                minNumWords = LSNumWords(line0->lineNum);
+        int line0num = LSNumWords(line0->lineNum);
+        int line1num = LSNumWords(line1->lineNum);
+        
+        
+        if (line0num < line1num)
+                minNumWords = line0num;
         else
-                minNumWords = LSNumWords(line1->lineNum);
+                minNumWords = line1num;
         for (i = 0; i < minNumWords; i++) {
-                j = strcmp(getWord(line0,i),getWord(line1,i));
+                j = strcmp(SSNATIVEGETWORD(line0,i),SSNATIVEGETWORD(line1,i));
                 if (j != 0)
                         return j;
         }
         /* assert: line0 and line1 are equal for the first min words */
-        return LSNumWords(line0->lineNum) - LSNumWords(line1->lineNum);
+        return line0num - line1num;
 }
 
 /*****exported functions*****/
+
+static int ipow(int base, int exp)
+{
+    int result = 1;
+    while (exp)
+    {
+        if (exp & 1)
+            result *= base;
+        exp >>= 1;
+        base *= base;
+    }
+
+    return result;
+}
+
 
 void SSInit(void)
 {
         lineList = NULL;
         lineCount = 0;
+        currentPower = 0;
+        currentSize = 0;
 }
 
 void SSReset(void)
@@ -87,6 +109,8 @@ void SSReset(void)
                 free(lineList);
         lineList = NULL;
         lineCount = 0;
+        currentPower = 0;
+        currentSize = 0;
 }
 
 KWStatus SSShiftSort(void)
@@ -95,32 +119,47 @@ KWStatus SSShiftSort(void)
 
         /* compute the size of lineList */
         lineCount = 0;
-        for (i = 0; i < LSNumLines(); i++) {
-		for (j = 0; j < LSNumWords(i); j++) {
-			/* exclude lines that start with a noise word */
-			if (!WTIsMember(LSGetWord(i,j)))
-				lineCount++;
-		}
+   /*     for (i = 0; i < LSNumLines(); i++) 
+        {
+            for (j = 0; j < LSNumWords(i); j++) 
+            {
+               // exclude lines that start with a noise word 
+               if (!WTIsMember(LSGetWord(i,j)))
+               {
+                  lineCount++;
+               }
+            }
         }
-
+   */
         /* allocate space for lineList */
-        lineList = calloc(lineCount, sizeof(LineList));
-        if (lineList == NULL) {
-		lineCount = 0;
-                return KWMEMORYERROR;
-	}
-
+    /*    lineList = calloc(lineCount, sizeof(LineList));
+        if (lineList == NULL) 
+       {
+            lineCount = 0;
+            return KWMEMORYERROR;
+         }
+*/
         /* fill lineList */
         k = 0;
-        for (i = 0; i < LSNumLines(); i++) {
-                for (j = 0; j < LSNumWords(i); j++) {
-			/* exclude lines that start with a noise word */
-			if (!WTIsMember(LSGetWord(i,j))) {
-				lineList[k].lineNum = i;
-				lineList[k].shiftNum = j;
-				k++;
-			}
-                }
+        for (i = 0; i < LSNumLines(); i++) 
+        {
+            for (j = 0; j < LSNumWords(i); j++) 
+            {
+               /* exclude lines that start with a noise word */
+               if (!WTIsMember(LSGetWord(i,j))) 
+               {
+                  lineCount++;
+                  if(lineCount >= currentSize)
+                  {
+                     currentPower++;
+                     lineList = realloc(lineList, ipow(2,currentPower)*sizeof(LineList)); // Two variables with the difference in name being a capital.  why =<
+                     currentSize = ipow(2,currentPower);
+                  }
+                  lineList[k].lineNum = i;
+                  lineList[k].shiftNum = j;
+                  k++;
+               }
+            }
         }
 
         /* sort the shifted lines */
@@ -136,7 +175,7 @@ const char* SSGetWord(int lineNum,int wordNum)
 			wordNum >= LSNumWords(lineList[lineNum].lineNum))
                 return NULL;
         else
-                return getWord(&lineList[lineNum],wordNum);
+                return SSNATIVEGETWORD(&lineList[lineNum],wordNum);
 }
 
 int SSNumWords(int lineNum)

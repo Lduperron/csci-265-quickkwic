@@ -2,7 +2,7 @@ INC = ../include
 
 XCFLAGS = -I$(INC)	## extra C flags
 
-CC = gcc $(XCFLAGS)
+CC = gcc -pg $(XCFLAGS)
 
 RUNTEST = - (rm -f actualOutput/*; \
 	cd input; \
