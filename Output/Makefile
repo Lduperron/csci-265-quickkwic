@@ -2,7 +2,7 @@ INC = ../include
 
 XCFLAGS = -I$(INC)	## local C flags
 
-CC = gcc $(XCFLAGS)
+CC = gcc -pg $(XCFLAGS)
 
 driver: driver.o Output.o ShiftSort.o
 	$(CC) -o driver driver.o Output.o ShiftSort.o

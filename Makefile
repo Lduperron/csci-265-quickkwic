@@ -37,7 +37,7 @@ INC = include
 
 XCFLAGS = -I$(INC)  ## extra C flags
 
-CC = gcc $(XCFLAGS)
+CC = gcc -pg $(XCFLAGS)
 
 IMPINC = $(INC)/Input.h $(INC)/LineStorage.h \
 	$(INC)/ShiftSort.h $(INC)/Output.h \
