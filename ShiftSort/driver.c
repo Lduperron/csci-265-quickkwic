@@ -120,6 +120,9 @@ int main()
 	printf("run the tests\n");
 	runTest();
 
+	printf("make sure the SSPrintState works with  no errors\n");
+	SSPrintState();
+
 	printf("invoke SSReset\n");
 	SSReset();
 
