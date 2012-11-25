@@ -30,7 +30,7 @@
 MODULES = Input LineStorage ShiftSort Output WordTable
 
 # Default compilation flags for IBM xlc compiler
-CFLAGS = -g
+CFLAGS = -O3
 
 # Directory holding all the .h files
 INC = include
