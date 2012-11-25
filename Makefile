@@ -11,14 +11,14 @@
 # different settings for the CFLAGS parameter.  Possible versions are:
 #
 # 1. For a debugging version (usable with the gdb debuggers)
-#    while developing the code (this is the default):
+#    while developing the code :
 #	make 'CFLAGS=-g' kwic
 #
 # 2. For a version of kwic that generates execution profiles:
 #	make 'CFLAGS=-pg' kwic
 #
 # 3. For an (optimized) production version of the program:
-#	make 'CFLAGS=-O' kwic
+#	make 'CFLAGS=-O3' kwic (this is the default)
 #
 # NOTE:	If you want to switch from one version of kwic to another (e.g.
 #	after having produced the debugging version, you now want a
@@ -37,7 +37,7 @@ INC = include
 
 XCFLAGS = -I$(INC)  ## extra C flags
 
-CC = gcc -pg $(XCFLAGS)
+CC = gcc $(XCFLAGS)
 
 IMPINC = $(INC)/Input.h $(INC)/LineStorage.h \
 	$(INC)/ShiftSort.h $(INC)/Output.h \
