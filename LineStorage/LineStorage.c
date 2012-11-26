@@ -84,7 +84,7 @@ static int ipow(int base, int exp)
 
 
 
- LineNodePtr LSNATIVEGETLINE(int i)
+ LineNodePtr LSNativeGetLine(int i)
 {
 	LineNodePtr tmpLinePtr;
 
@@ -258,7 +258,7 @@ const char* LSGetWord(int lineNum,int wordNum)
 		return NULL;
 
 	/* find line LineNum */
-	tmpLinePtr = LSNATIVEGETLINE(lineNum);
+	tmpLinePtr = LSNativeGetLine(lineNum);
 	if (tmpLinePtr == NULL)
 		return NULL;
 
@@ -274,7 +274,7 @@ int LSNumWords(int lineNum)
 	LineNodePtr tmpLinePtr;
 
 	/* find line lineNum */
-	tmpLinePtr = LSNATIVEGETLINE(lineNum);
+	tmpLinePtr = LSNativeGetLine(lineNum);
 
 	if (tmpLinePtr == NULL) {
 		return KWRANGEERROR;
@@ -299,7 +299,7 @@ void LSPrintState(void)
 
    
 	printf("lineCount:%d\n",lineCount);
-	for(i = 0; i < lineNodeArraySize; i++) {
+	for (i = 0; i < lineNodeArraySize; i++) {
 		tmpLinePtr = lineNodeArray[i];
 		printf("\twordCount:%d\n\t",tmpLinePtr->wordCount);
 		for (tmpWordPtr = tmpLinePtr->headWordPtr; tmpWordPtr != NULL; tmpWordPtr = tmpWordPtr->nextWordPtr) {
