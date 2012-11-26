@@ -115,28 +115,7 @@ KWStatus SSShiftSort(void)
 {
 	int i,j,k;
 
-        /* compute the size of lineList */
 	lineCount = 0;
-   /*     for (i = 0; i < LSNumLines(); i++) 
-        {
-            for (j = 0; j < LSNumWords(i); j++) 
-            {
-               // exclude lines that start with a noise word 
-               if (!WTIsMember(LSGetWord(i,j)))
-               {
-                  lineCount++;
-               }
-            }
-        }
-   */
-        /* allocate space for lineList */
-    /*    lineList = calloc(lineCount, sizeof(LineList));
-        if (lineList == NULL) 
-       {
-            lineCount = 0;
-            return KWMEMORYERROR;
-         }
-*/
         /* fill lineList */
 	k = 0;
 	for (i = 0; i < LSNumLines(); i++) {
