@@ -163,7 +163,7 @@ void LSReset(void)
 		free(tmpLinePtr);
 	}
    */
-	free(lineNodeArray);  // I don't know if I need to do this.  Is it handled by free(lineNodeArray[0])?
+	free(lineNodeArray); 
 	lineNodeArray = (LineNodePtr*) malloc(sizeof(LineNodePtr));
 	lineNodeArraySize = 0;
 	lineNodeArrayCapacity = 1;
@@ -185,21 +185,6 @@ KWStatus LSAddLine(void)
 	newLinePtr->tailWordPtr = NULL;
 	newLinePtr->wordCount = 0;
 
-	/* link in the new LineNode */
-   /*
-   
-	if (tailLinePtr == NULL) 
-   {
-		headLinePtr = newLinePtr;
-	} 
-   else 
-   {
-		tailLinePtr->nextLinePtr = newLinePtr;
-	}
-   
-	tailLinePtr = newLinePtr;
-   */
-   
 	if(lineNodeArraySize < lineNodeArrayCapacity) {
 		lineNodeArray[lineNodeArraySize] = newLinePtr;
 		lineNodeArraySize++;
