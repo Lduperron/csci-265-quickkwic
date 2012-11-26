@@ -34,7 +34,7 @@ int main()
 	int b,i;
 
 	if(WTInit("testlockNoiseWords") != KWFILEERROR){
-		printf("WordTalbe opened a write protected file!\n");
+		printf("WordTable opened a write protected file!\n");
 		exit(1);
 	}
 
