@@ -1,0 +1,30 @@
+John Doe
+------------------------------------------------------------------------------
+
+
+Abigale:
+   I was impressed with how Abigale worked, and her composure.
+I would be happy to work with her again.
+
+Jim:
+   Jim was defensive throughout the project. He would get very offened if 
+one of his ideas was rejected by the team. My impression of Jim was that
+he was a liability to the team and we had to baby him.
+
+Harry:
+   Harry had a very strong personality, but he was gentle and kind.
+My only issue was that perhaps he would not be good at making high pressure
+decisions that might negativly affect other team members.
+
+Molly:
+   I had little contact with Moly, and have no comments.
+
+General Comments:
+   I was happy with the team, although there were some issues, I was happy
+with the product that we produced.
+
+
+##############################################################################
+
+Note: Please add teammembers in alphabetical order, by FIRST NAME
+      As ONLY Peter Walsh will see this, please spell check yourself.

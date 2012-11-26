@@ -2,7 +2,7 @@ INC = ../include
 
 XCFLAGS = -I$(INC) ## extra C flags
 
-CC = gcc -pg $(XCFLAGS)
+CC = gcc $(XCFLAGS)
 
 driver: driver.o LineStorage.o
 	$(CC) -o driver driver.o LineStorage.o
@@ -26,4 +26,4 @@ LineStorage.o: $(INC)/kwic.h $(INC)/LineStorage.h LineStorage.c
 	$(CC) -c $(CFLAGS) LineStorage.c
 
 clean:
-	rm -f *.o act/* driver *.gcov *.gcda *.gcno
+	rm -f *.o act/* driver *.gcov *.gcda *.gcno gmon.out

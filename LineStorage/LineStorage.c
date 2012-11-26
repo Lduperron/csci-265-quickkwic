@@ -70,37 +70,37 @@ static int currentPower = 0;
 */
 static int ipow(int base, int exp)
 {
-    int result = 1;
-    while (exp)
-    {
-        if (exp & 1)
-            result *= base;
-        exp >>= 1;
-        base *= base;
-    }
+	int result = 1;
+	while (exp)
+	{
+		if (exp & 1)
+			result *= base;
+		exp >>= 1;
+		base *= base;
+	}
 
-    return result;
+	return result;
 }
 
 
 
- LineNodePtr LSNATIVEGETLINE(int i)
+ LineNodePtr LSNativeGetLine(int i)
 {
 	LineNodePtr tmpLinePtr;
 
 	if (i < 0)
-   {
+	{
 		return NULL;
-   }
+	}
    
 
-   if(i >= lineNodeArraySize)
-   {
-      return NULL;
-   }
+	if(i >= lineNodeArraySize)
+	{
+		return NULL;
+	}
    
    
-   return lineNodeArray[i];
+	return lineNodeArray[i];
    
 	//return tmpLinePtr;
 }
@@ -129,29 +129,25 @@ void LSInit(void)
 	headLinePtr = NULL;
 	tailLinePtr = NULL;
 	lineCount = 0;
-   lineNodeArray = (LineNodePtr*) malloc (sizeof( LineNodePtr ));
+	lineNodeArray = (LineNodePtr*) malloc(sizeof(LineNodePtr));
 }
 
 void LSReset(void)
 {
 	LineNodePtr tmpLinePtr;
 	WordNodePtr tmpWordPtr0,tmpWordPtr1;
-   int i;
-   for(i = 0; i < lineNodeArraySize; i++)
-   {
-      
-      tmpWordPtr0 = lineNodeArray[i]->headWordPtr;
-		while (tmpWordPtr0 != NULL)
-      {
+	int i;
+	for(i = 0; i < lineNodeArraySize; i++) {
+		tmpWordPtr0 = lineNodeArray[i]->headWordPtr;
+		while (tmpWordPtr0 != NULL) {
 			tmpWordPtr1 = tmpWordPtr0->nextWordPtr;
 			free(tmpWordPtr0->word);
 			free(tmpWordPtr0);
 			tmpWordPtr0 = tmpWordPtr1;
 		}
       
-      free(lineNodeArray[i]);
-      
-   }
+		free(lineNodeArray[i]);
+	}
    
    /*
 	while (headLinePtr != NULL) {
@@ -167,11 +163,11 @@ void LSReset(void)
 		free(tmpLinePtr);
 	}
    */
-   free(lineNodeArray);  // I don't know if I need to do this.  Is it handled by free(lineNodeArray[0])?
-   lineNodeArray = (LineNodePtr*) malloc (sizeof( LineNodePtr ));
-   lineNodeArraySize = 0;
-   lineNodeArrayCapacity = 1;
-   currentPower = 0;
+	free(lineNodeArray); 
+	lineNodeArray = (LineNodePtr*) malloc(sizeof(LineNodePtr));
+	lineNodeArraySize = 0;
+	lineNodeArrayCapacity = 1;
+	currentPower = 0;
 	lineCount = 0;
 	tailLinePtr = NULL;
 }
@@ -189,37 +185,21 @@ KWStatus LSAddLine(void)
 	newLinePtr->tailWordPtr = NULL;
 	newLinePtr->wordCount = 0;
 
-	/* link in the new LineNode */
-   /*
-   
-	if (tailLinePtr == NULL) 
-   {
-		headLinePtr = newLinePtr;
-	} 
-   else 
-   {
-		tailLinePtr->nextLinePtr = newLinePtr;
+	if(lineNodeArraySize < lineNodeArrayCapacity) {
+		lineNodeArray[lineNodeArraySize] = newLinePtr;
+		lineNodeArraySize++;
+	}
+	else
+	{
+		currentPower++;
+		lineNodeArray = (LineNodePtr*) realloc (lineNodeArray , ipow(2,currentPower)*sizeof(LineNodePtr));
+		lineNodeArrayCapacity = ipow(2,currentPower);
+		lineNodeArray[lineNodeArraySize] = newLinePtr;
+		lineNodeArraySize++;
 	}
    
-	tailLinePtr = newLinePtr;
-   */
    
-   if(lineNodeArraySize < lineNodeArrayCapacity)
-   {
-      lineNodeArray[lineNodeArraySize] = newLinePtr;
-      lineNodeArraySize++;
-   }
-   else
-   {
-      currentPower++;
-      lineNodeArray = (LineNodePtr*) realloc (lineNodeArray , ipow(2,currentPower)*sizeof(LineNodePtr));
-      lineNodeArrayCapacity = ipow(2,currentPower);
-      lineNodeArray[lineNodeArraySize] = newLinePtr;
-      lineNodeArraySize++;
-   }
-   
-   
-   tailLinePtr = lineNodeArray[lineNodeArraySize-1];
+	tailLinePtr = lineNodeArray[lineNodeArraySize-1];
    
 	return KWSUCCESS;
 }
@@ -263,7 +243,7 @@ const char* LSGetWord(int lineNum,int wordNum)
 		return NULL;
 
 	/* find line LineNum */
-	tmpLinePtr = LSNATIVEGETLINE(lineNum);
+	tmpLinePtr = LSNativeGetLine(lineNum);
 	if (tmpLinePtr == NULL)
 		return NULL;
 
@@ -279,7 +259,7 @@ int LSNumWords(int lineNum)
 	LineNodePtr tmpLinePtr;
 
 	/* find line lineNum */
-	tmpLinePtr = LSNATIVEGETLINE(lineNum);
+	tmpLinePtr = LSNativeGetLine(lineNum);
 
 	if (tmpLinePtr == NULL) {
 		return KWRANGEERROR;
@@ -298,18 +278,16 @@ int LSNumLines(void)
 
 void LSPrintState(void)
 {
-   int i = 0;
-   LineNodePtr tmpLinePtr;
+	int i = 0;
+	LineNodePtr tmpLinePtr;
 	WordNodePtr tmpWordPtr;
 
    
 	printf("lineCount:%d\n",lineCount);
-   for(i = 0; i < lineNodeArraySize; i++)
-   {
-      tmpLinePtr = lineNodeArray[i];
+	for (i = 0; i < lineNodeArraySize; i++) {
+		tmpLinePtr = lineNodeArray[i];
 		printf("\twordCount:%d\n\t",tmpLinePtr->wordCount);
-		for (tmpWordPtr = tmpLinePtr->headWordPtr; tmpWordPtr != NULL;	tmpWordPtr = tmpWordPtr->nextWordPtr) 
-      {
+		for (tmpWordPtr = tmpLinePtr->headWordPtr; tmpWordPtr != NULL; tmpWordPtr = tmpWordPtr->nextWordPtr) {
 			printf("!%s",tmpWordPtr->word);
 		}
 		printf("!\n");

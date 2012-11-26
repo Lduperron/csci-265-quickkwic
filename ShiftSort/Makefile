@@ -2,7 +2,7 @@ INC = ../include
 
 XCFLAGS = -I$(INC) ## extra C flags
 
-CC = gcc -pg $(XCFLAGS)
+CC = gcc $(XCFLAGS)
 
 driver: driver.o ShiftSort.o LineStorage.o WordTable.o
 	$(CC) -o driver driver.o ShiftSort.o LineStorage.o WordTable.o
@@ -33,4 +33,4 @@ WordTable.o: $(INC)/kwic.h $(INC)/WordTable.h WordTable.c
 	$(CC) -c $(CFLAGS) WordTable.c
 
 clean:
-	rm -f *.o act/* driver *.gcov *.gcda *.gcno
+	rm -f *.o act/* driver *.gcov *.gcda *.gcno gmon.out

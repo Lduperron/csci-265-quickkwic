@@ -33,6 +33,12 @@ int main()
 {
 	int b,i;
 
+	if(WTInit("testlockNoiseWords") != KWFILEERROR){
+		printf("WordTable opened a write protected file!\n");
+		exit(1);
+	}
+
+
 	if (WTInit("testNoiseWords") != KWSUCCESS) {
 		printf("could not read testNoiseWords file\n");
 		exit(1);
@@ -48,6 +54,10 @@ int main()
 			errorCount++;
 		}
 	}
+
+	printf("make sure the WTPrintState works with no errors\n");
+	WTPrintState();
+
 
 	printf("\nCheck words that should not be in WordTable\n");
 	for (i = 0; notInWordList[i]; i++) {
