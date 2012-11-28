@@ -35,6 +35,8 @@ int main()
 
 	if(WTInit("testlockNoiseWords") != KWFILEERROR){
 		printf("WordTable opened a write protected file!\n");
+      printf("(make sure testlockNoiseWords does NOT have read permitions)\n");
+      printf("use chmod a-rwx testlockNoiseWords to take away all permitions\n");
 		exit(1);
 	}
 
