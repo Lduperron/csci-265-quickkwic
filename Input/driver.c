@@ -12,5 +12,8 @@ int main(int argc,char* argv[])
 		INLoad(NULL);
 	else
 		INLoad(argv[1]);
+
+   INLoad("nonexsistantfile");
+
 	return 0;
 }

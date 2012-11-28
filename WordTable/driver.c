@@ -33,10 +33,8 @@ int main()
 {
 	int b,i;
 
-	if(WTInit("testlockNoiseWords") != KWFILEERROR){
-		printf("WordTable opened a write protected file!\n");
-      printf("(make sure testlockNoiseWords does NOT have read permitions)\n");
-      printf("use chmod a-rwx testlockNoiseWords to take away all permitions\n");
+	if(WTInit("non-existatnfile") != KWFILEERROR){
+		printf("WordTable opened a non-existant file!\n");
 		exit(1);
 	}
 

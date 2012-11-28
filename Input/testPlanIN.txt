@@ -4,4 +4,6 @@ line 59 is a LSAddLine error != KWSUCCESS. Cannot test
 
 line 71 is a LSAddWork error != KWSUCCESS. Cannot test
 
+added a call to INLoad using a noexsistantfile
+
 all other lines are tested
