@@ -1,0 +1,57 @@
+Line Coverage: 87.30% of 63
+Originally: 60ish? *****CHECK*****
+
+Line 42     Resolved
+            Skipping white space,
+            
+            if ( c==eof )
+               return NULL;
+               
+            Resolved by adding whitespace lines before eof in testNoiseWords
+            
+51,59       Unresolved
+            Same issue in different places (reading word, reading extra junk)
+
+            Tried a file with an over-length word then eof,a file that 
+            ended directly after first word, and with only whitespace 
+            before eof.
+            
+57          Resolved
+            Skipping trailing junk after max word length,
+            
+            while ( c != '\n' ) {
+               ...
+               
+            Resolved by adding a noise word longer than max length, so
+            it will go into loop.
+            
+75          Resolved
+            fp = fopen(filename, "r");
+            if (fp == NULL) {
+               perror...
+               
+            Resolved by having driver attempt to read noise words from
+            a non-existant file
+            
+83          Unresolved
+            wordList = calloc(arrayLen, sizeof(char *);
+            if (wordList == NULL)
+            ...
+            
+            Can't force allocation to fail, leave as is
+            
+94, 96, 102 Same as 83, either calloc or malloc
+
+92          Resolved
+            While feeding words into wordTable,
+            
+            if (numWords >= arrayLength)
+            ...
+            
+            Resolved by having driver use a noise word file with more 
+            words than will fit in the table
+            
+133 - 139   Resolved
+            WTPrintState function never gets called
+            
+            Resolved by having driver call it
