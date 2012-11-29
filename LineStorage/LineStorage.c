@@ -29,7 +29,7 @@ typedef LineNode* LineNodePtr;
 
 static LineNodePtr tailLinePtr;
 static int lineCount;
-static LineNode** lineNodeArray= NULL;
+static LineNodePtr* lineNodeArray = NULL;
 static int lineNodeArraySize = 0;
 static int lineNodeArrayCapacity = 1;
 static int currentPower = 0;
@@ -39,7 +39,7 @@ static int currentPower = 0;
 1. if lineCount == 0 then
 	taillinePtr == NULL
    else
-	tailLinePtr points to the last LineNode in the linked list of LineNodes.
+	tailLinePtr points to the last LineNode in the array of LineNodes.
 	There are lineCount LineNodes in this list.
 
 2. for every LineNode allocated by LineStorage
