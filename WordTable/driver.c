@@ -33,20 +33,14 @@ int main()
 {
 	int b,i;
 
-	if(WTInit("non-existatnfile") != KWFILEERROR){
-		printf("WordTable opened a non-existant file!\n");
-		exit(1);
-	}
-
-
 	if (WTInit("testNoiseWords") != KWSUCCESS) {
 		printf("could not read testNoiseWords file\n");
 		exit(1);
 	}
-   if (WTInit("fakeNoiseWords") == KWSUCCESS) {
-      printf("read dummy file which shouldn't exist\n");
-      exit(1);
-   }
+	if (WTInit("fakeNoiseWords") == KWSUCCESS) {
+		printf("read dummy file which shouldn't exist\n");
+		exit(1);
+	}
 
 	printf("Check words that should be in WordTable\n");
 	for (i = 0; inWordList[i]; i++) {
@@ -73,15 +67,15 @@ int main()
 			errorCount++;
 		}
 	}
-   if (WTInit("eofNoiseWord") != KWSUCCESS){
-      printf("could not read eofNoiseWord file\n");
-      exit(1);
-   }
-   if (WTInit("extraNoiseWords") != KWSUCCESS) {
-      printf("could not read extraNoiseWords file\n");
-      exit(1);
-   }
-   WTPrintState();
+	if (WTInit("eofNoiseWord") != KWSUCCESS){
+		printf("could not read eofNoiseWord file\n");
+		exit(1);
+	}
+	if (WTInit("extraNoiseWords") != KWSUCCESS) {
+		printf("could not read extraNoiseWords file\n");
+		exit(1);
+	}
+	WTPrintState();
 
 	if (errorCount == 0)
 		printf("\n\nNo errors detected!\n");

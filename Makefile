@@ -60,6 +60,14 @@ gdb:	kwic
 	gdb -d ShiftSort -d WordTable -d Input -d Output \
 		-d LineStorage kwic
 
+gcov: kwic
+	$(MAKE) clean kwic 'CFLAGS=-pg'
+	rm -f summaryLC.txt
+	for m in $(MODULES); do \
+		(cd $$m; $(MAKE) 'CFLAGS=-pg' gcov; gcov $$m >> ../summaryLC.txt) \
+	done
+	cat summaryLC.txt
+
 runtest: kwic
 # test each module first
 	for m in $(MODULES); do \
@@ -106,3 +114,4 @@ clean:
 		( cd $$m; $(MAKE) clean; ) \
 	done
 	rm -f kwic core mon.out gmon.out *.o actualOutput/*
+	rm -f summaryLC.txt
