@@ -60,7 +60,7 @@ gdb:	kwic
 	gdb -d ShiftSort -d WordTable -d Input -d Output \
 		-d LineStorage kwic
 
-gcov: kwic
+gcov:
 	$(MAKE) clean kwic 'CFLAGS=-pg'
 	rm -f summaryLC.txt
 	for m in $(MODULES); do \

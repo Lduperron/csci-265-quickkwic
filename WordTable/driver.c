@@ -71,10 +71,17 @@ int main()
 		printf("could not read eofNoiseWord file\n");
 		exit(1);
 	}
+
+        if (WTInit("eofNoiseWord2") != KWSUCCESS){
+                printf("could not read eofNoiseWord2 file\n");
+                exit(1);
+        }
+
 	if (WTInit("extraNoiseWords") != KWSUCCESS) {
 		printf("could not read extraNoiseWords file\n");
 		exit(1);
 	}
+
 	WTPrintState();
 
 	if (errorCount == 0)
