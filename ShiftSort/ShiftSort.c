@@ -41,7 +41,7 @@ static int currentPower;
 /***** local functions *****/
 
 /* return word wordNum from the shifted LineStorage line specified by linePtr */
-const char* SSNativeGetWord(LineListPtr linePtr,int wordNum)
+static const char* SSNativeGetWord(LineListPtr linePtr,int wordNum)
 {
 	int shiftedWordNum;
 
@@ -58,7 +58,7 @@ const char* SSNativeGetWord(LineListPtr linePtr,int wordNum)
 * else
 *       return a positive value
 */
-int lineCompare(LineListPtr line0,LineListPtr line1)
+static int lineCompare(LineListPtr line0,LineListPtr line1)
 {
 	int i,j,minNumWords,minLine;
 	int line0num = LSNumWords(line0->lineNum);
@@ -78,8 +78,6 @@ int lineCompare(LineListPtr line0,LineListPtr line1)
 	return line0num - line1num;
 }
 
-/*****exported functions*****/
-
 static int ipow(int base, int exp)
 {
 	int result = 1;
@@ -91,6 +89,7 @@ static int ipow(int base, int exp)
 	}
 	return result;
 }
+/*****exported functions*****/
 
 
 void SSInit(void)

@@ -27,9 +27,9 @@ typedef LineNode* LineNodePtr;
 
 /***** local variables *****/
 
-static LineNodePtr headLinePtr, tailLinePtr;
+static LineNodePtr tailLinePtr;
 static int lineCount;
-static LineNode** lineNodeArray= NULL;
+static LineNodePtr* lineNodeArray = NULL;
 static int lineNodeArraySize = 0;
 static int lineNodeArrayCapacity = 1;
 static int currentPower = 0;
@@ -37,11 +37,9 @@ static int currentPower = 0;
 /***** state invariant *****
 
 1. if lineCount == 0 then
-	headlinePtr == NULL
 	taillinePtr == NULL
    else
-	headLinePtr points to a null-terminated linked list of LineNodes.
-	tailLinePtr points to the last LineNode in this list.
+	tailLinePtr points to the last LineNode in the array of LineNodes.
 	There are lineCount LineNodes in this list.
 
 2. for every LineNode allocated by LineStorage
@@ -55,19 +53,10 @@ static int currentPower = 0;
 
 3. For every WordNode allocated word is a null-terminated array of characters.
 
-4. All of the dynamic memory allocated by LineStorage (and not yet freed)
-   is in the list structure headed by headLinePtr.
 */
 
 /***** local functions *****/
 
-/*
-* if headLinePtr contains at least i+1 LineNodes then
-*	return the address of the ith LineNode
-* else
-*	return NULL
-* Assumed: the state invariant holds
-*/
 static int ipow(int base, int exp)
 {
 	int result = 1;
@@ -126,7 +115,6 @@ WordNodePtr getWord(WordNodePtr wordNodePtr,int i)
 
 void LSInit(void)
 {
-	headLinePtr = NULL;
 	tailLinePtr = NULL;
 	lineCount = 0;
 	lineNodeArray = (LineNodePtr*) malloc(sizeof(LineNodePtr));
@@ -149,20 +137,6 @@ void LSReset(void)
 		free(lineNodeArray[i]);
 	}
    
-   /*
-	while (headLinePtr != NULL) {
-		tmpWordPtr0 = headLinePtr->headWordPtr;
-		while (tmpWordPtr0 != NULL) {
-			tmpWordPtr1 = tmpWordPtr0->nextWordPtr;
-			free(tmpWordPtr0->word);
-			free(tmpWordPtr0);
-			tmpWordPtr0 = tmpWordPtr1;
-		}
-		tmpLinePtr = headLinePtr;
-		headLinePtr = headLinePtr->nextLinePtr;
-		free(tmpLinePtr);
-	}
-   */
 	free(lineNodeArray); 
 	lineNodeArray = (LineNodePtr*) malloc(sizeof(LineNodePtr));
 	lineNodeArraySize = 0;
