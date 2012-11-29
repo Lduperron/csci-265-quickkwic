@@ -9,12 +9,12 @@ Line 42     Resolved
                
             Resolved by adding whitespace lines before eof in testNoiseWords
             
-51,59       Unresolved
-            Same issue in different places (reading word, reading extra junk)
+51,59       Resolved
+            Normal editors add an extra \n at the end of a file.
 
-            Tried a file with an over-length word then eof,a file that 
-            ended directly after first word, and with only whitespace 
-            before eof.
+            This case is hadled by the testcase abouve.
+
+            Edited a file using hexedit to have a char, then an eof file
             
 57          Resolved
             Skipping trailing junk after max word length,
