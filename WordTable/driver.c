@@ -22,7 +22,7 @@ char* notInWordList[] = {
 	"thereupon", "into", "stool",
 
 	/* special strings */
-        "", " ", ",",
+	"", " ", ",",
 
 	0 /* terminator */
 };
@@ -72,10 +72,10 @@ int main()
 		exit(1);
 	}
 
-        if (WTInit("eofNoiseWord2") != KWSUCCESS){
-                printf("could not read eofNoiseWord2 file\n");
-                exit(1);
-        }
+	if (WTInit("eofNoiseWord2") != KWSUCCESS){
+		printf("could not read eofNoiseWord2 file\n");
+		exit(1);
+	}
 
 	if (WTInit("extraNoiseWords") != KWSUCCESS) {
 		printf("could not read extraNoiseWords file\n");
