@@ -48,14 +48,14 @@ the actual and expected values were.
  and what the actual and expected values were.*
  
  driver.c then prints out the state of ShiftSort.  If this method does
- not crash it is considered to be a success.  Otherwise it is considered a failure.
+ not crash this test is considered to be a success.  Otherwise it is considered a failure.
  
  driver.c then resets ShiftSort and calls ShiftSort's SSShiftSort
  method.
  
  driver.c then repeats all * steps.
  
- If no errors are detected a message saying so is output to stanard out
- and the error count is returned.  Otherwise, just the error count is
- returned.
+ If no errors are detected a message saying so is output to stanard out,
+ the error count is returned, and driver.c terminates.  Otherwise,  
+ the error count is returned and driver.c terminates.
          

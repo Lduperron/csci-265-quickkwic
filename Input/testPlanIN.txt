@@ -1,9 +1,36 @@
-line 38 is a read error on a file. Cannot test
+########################################################################
+#Test Plan: Input
+########################################################################
+driver.c tests the ability of Input.c to take either a command line
+argument or user input as the filename, open the given file, and input it 
+into KWIC.
 
-line 59 is a LSAddLine error != KWSUCCESS. Cannot test
+driver.c begins by initializing Input.
 
-line 71 is a LSAddWork error != KWSUCCESS. Cannot test
+Then, if 1 command line argument was provided to driver.c 
+Input's INLoad method is called with a NULL parameter passed to it.  
+Otherwise, the INLoad method is called with driver.c's argv[1] as the 
+parameter passed to it.
 
-added a call to INLoad using a noexsistantfile
+driver.c then calls INLoad on a non-existant file (example filename:
+"nonexistantfile")
 
-all other lines are tested
+driver.c then ends by returning 0.
+
+driver.c is then used by Makefile to run all of the tests desired.  All
+of the desired tests are placed in the diretory input.  For each desired
+test Makefile runs driver.c with the given test's filename as driver.c's
+command line argument.  It then puts actual output from driver.c in a 
+directory called actualOutput and diffs it with the corresponding file
+in a directory called expectedOutput.  All directories discussed above 
+are stored in the same directoy Makefile is in.  If the tests above are
+succesful diff should return nothing.  Otherwise, the tests failed.  
+
+One all of the files in input have been processed the Makefile
+running driver.c terminates.
+
+The input test files described above should contain data like the 
+following:
+
+The C Programming Language
+The Cat in the Hat

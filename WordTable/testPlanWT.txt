@@ -29,8 +29,8 @@ error message is output to standard out stating the expected value and
 the actual value.
 
 driver.c then prints out the current contents of WordTable's data
-structure.  If this method does not crash driver then it is 
-considered successful.
+structure.  If this test does not crash driver then it is 
+considered successful.  Otherwise it is considered a failure.
 
 driver.c then checks to see if erroneous words were added into 
 WordTable's internal data structure by calling WordTable's WTIsMember on
@@ -49,8 +49,10 @@ appropriate error message is output to standard out and driver.c exits
 with a value of 1.
 
 driver.c then prints out the contents WordTable's internal data structure.
+This test is considered successful if the method call does not
+crash driver.c.  Otherwise it is considered a failure.
 
 driver.c then prints out an appropriate message to standard out if no 
 errors were detected.
 
-Finally, driver.c returns the error count.
+Finally, driver.c returns the error count and terminates.
