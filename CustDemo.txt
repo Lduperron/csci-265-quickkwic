@@ -1,0 +1,11 @@
+########################################################################
+#Customer Demo
+########################################################################
+make kwic
+    make kwic will be run to demonstrate the program being run 
+    successfully on a very large data set
+make gcov
+    make gcov will run gcov on all of the modules and return a summary 
+make runtest
+    make runtest will call all of the runtests for all of the modules
+    to do module testing then the system as a whole will be tested
