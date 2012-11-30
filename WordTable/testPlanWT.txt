@@ -1,57 +1,56 @@
-Line Coverage: 87.30% of 63
-Originally: 60ish? *****CHECK*****
+########################################################################
+#Test Plan : Word Table
+########################################################################
+driver.c is a test program which tests the ability of WordTable.c to
+read files containing noise words, correctly store data in its internal 
+data structure, print the contents of its internal data structure, and 
+does not add extra words that should not be included in WordTable's
+internal data structure.  
 
-Line 42     Resolved
-            Skipping white space,
-            
-            if ( c==eof )
-               return NULL;
-               
-            Resolved by adding whitespace lines before eof in testNoiseWords
-            
-51,59       Resolved
-            Normal editors add an extra \n at the end of a file.
+driver.c begins testing by initializing WorldTable with the 
+testNoiseWords file.  If the initialization method does not return a 
+success driver.c outputs an approriate error message to standard out
+and exits with a value of 1.
 
-            This case is hadled by the testcase abouve.
+driver.c then tries to initialize WordTable with the non-existent file
+fakeNoiseWords.  If the initialization method returns a success
+WordTable.c is not functioning correctly so an appropriate error message
+is output to standard out and exits with a value of 1.
 
-            Edited a file using hexedit to have a char, then an eof file
-            
-57          Resolved
-            Skipping trailing junk after max word length,
-            
-            while ( c != '\n' ) {
-               ...
-               
-            Resolved by adding a noise word longer than max length, so
-            it will go into loop.
-            
-75          Resolved
-            fp = fopen(filename, "r");
-            if (fp == NULL) {
-               perror...
-               
-            Resolved by having driver attempt to read noise words from
-            a non-existant file
-            
-83          Unresolved
-            wordList = calloc(arrayLen, sizeof(char *);
-            if (wordList == NULL)
-            ...
-            
-            Can't force allocation to fail, leave as is
-            
-94, 96, 102 Same as 83, either calloc or malloc
+driver.c then checks to see that all of the words that should be 
+contained within WordTable's internal data structure are properly 
+stored by calling WordTable's WTIsMember on all of the elements of an 
+array within driver.c that contains all of the words in the same order 
+that WordTable's internal data structure would have them included 
+should it have successfully had all of the data in the testNoiseWords 
+file inserted in the proper order.  If one of the words in driver.c's 
+array was not found the error count is incremented and an appropriate 
+error message is output to standard out stating the expected value and 
+the actual value.
 
-92          Resolved
-            While feeding words into wordTable,
-            
-            if (numWords >= arrayLength)
-            ...
-            
-            Resolved by having driver use a noise word file with more 
-            words than will fit in the table
-            
-133 - 139   Resolved
-            WTPrintState function never gets called
-            
-            Resolved by having driver call it
+driver.c then prints out the current contents of WordTable's data
+structure.  If this method does not crash driver then it is 
+considered successful.
+
+driver.c then checks to see if erroneous words were added into 
+WordTable's internal data structure by calling WordTable's WTIsMember on
+all of the elements of an array within driver.c that contains a list of
+words containing words that should be in the data structure within
+WordTable (i.e. therefore, into would be in this array since they
+contain the and in respectively).  If one of the words in driver.c's
+array was found the error count is incremented and appropriate error
+message is output to standard output stating the expected value and the
+actual value. 
+
+driver.c then checks to see if the files eofNoiseWord, eofNoiseWord2, 
+extraNoiseWords can be read and added to the internal data structure of 
+WordTable.  If one of the files cannot be read and added an 
+appropriate error message is output to standard out and driver.c exits
+with a value of 1.
+
+driver.c then prints out the contents WordTable's internal data structure.
+
+driver.c then prints out an appropriate message to standard out if no 
+errors were detected.
+
+Finally, driver.c returns the error count.
