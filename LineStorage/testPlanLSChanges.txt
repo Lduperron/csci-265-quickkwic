@@ -1,0 +1,3 @@
+Line 182, 217, 200 and 221 refferr to a memory error. Therefore we could not test.
+
+
