@@ -8,20 +8,35 @@ General issues:
 
    -Need to check functions and make sure ones only needed locally are
     declared static
+    
+   -What is ipow?
+     
+   -Why is it in 2 places?    
 
 Evan will be following up on these.
 
-Conclusion:
+
+Folllow up:
+
     -General formatting was looked at. I attempted to keep things 
      relatively uniform with kwic-2012 and used the formatting
      that they used in terms of tab size, having a space between
      keywords and parameters, etc.
+     
     -All functions that were declared locally have been declared static
      and put under the local functions comment header in their respective
      files
+     
     -The state invariant of LineStorage was updated to reflect the updated
      code; the other invariants seemed to hold true upon inspection.
+     
     -There was a pointer that needed to be updated in LineStorage
+    
     -Took out vestigial code - old code that no longer had a use - after
      it had been modified to increase performance
+    
+    -ipow is a function to manage array expansion
+    
+    -It is stored in 2 places because there was no single module to place 
+     it appropriate for using it everywhere it is needed
 
