@@ -1,1 +1,9 @@
-LC at 100%. No changes
+########################################################################
+#Test Plan: Output
+########################################################################
+driver.c tests the ability of Output.c to print in the specified format
+without crashing.
+
+driver.c starts by initializing Output.c.  It then calls Output.c's
+OUPrint method.  If driver.c does not crash as a result of the call to
+OUPrint the test is considered successful.  Otherwise, the test failed.
