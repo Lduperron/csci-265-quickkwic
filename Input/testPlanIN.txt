@@ -34,3 +34,10 @@ following:
 
 The C Programming Language
 The Cat in the Hat
+
+########################################################################
+#Line Coverage Justification
+########################################################################
+line 38 is a read error on a file. Cannot test
+line 59 is a LSAddLine error != KWSUCCESS. Cannot test
+line 71 is a LSAddWork error != KWSUCCESS. Cannot test

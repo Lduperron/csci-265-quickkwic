@@ -67,4 +67,8 @@ what the actual and expected values were.*
  the error count is returned, and driver.c terminates.  Otherwise,  
  the error count is returned and driver.c terminates.
 
+########################################################################
+#Line Coverage Justification
+########################################################################
 
+Line 182, 217, 200 and 221 reffer to a maloc error. Therefore we could not test.

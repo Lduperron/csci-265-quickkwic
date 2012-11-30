@@ -58,4 +58,8 @@ the actual and expected values were.
  If no errors are detected a message saying so is output to stanard out,
  the error count is returned, and driver.c terminates.  Otherwise,  
  the error count is returned and driver.c terminates.
-         
+
+########################################################################
+#Line Coverage Justification
+########################################################################
+LC at 100%

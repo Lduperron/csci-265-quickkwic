@@ -9,3 +9,7 @@ OUPrint method.  If driver.c does not crash as a result of the call to
 OUPrint the test is considered successful.  Otherwise, the test failed.
 
 driver.c then terminates.
+########################################################################
+#Line Coverage Justification
+########################################################################
+LC at 100%. No changes

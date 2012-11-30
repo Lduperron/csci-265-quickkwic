@@ -56,3 +56,16 @@ driver.c then prints out an appropriate message to standard out if no
 errors were detected.
 
 Finally, driver.c returns the error count and terminates.
+
+########################################################################
+#Line Coverage Justification
+########################################################################
+line 83          Unresolved
+            wordList = calloc(arrayLen, sizeof(char *);
+            if (wordList == NULL)
+            ...
+            
+            Can't force allocation to fail, leave as is
+            
+line 94, 96, 102 Same as 83, either calloc or malloc
+
