@@ -13,7 +13,7 @@ int main(int argc,char* argv[])
 	else
 		INLoad(argv[1]);
 
-   INLoad("nonexsistantfile");
+	INLoad("nonexsistantfile");
 
 	return 0;
 }
