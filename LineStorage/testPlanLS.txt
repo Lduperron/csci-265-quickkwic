@@ -1,3 +1,70 @@
-Line 182, 217, 200 and 221 refferr to a memory error. Therefore we could not test.
+########################################################################
+#Test Plan: LineStorage
+########################################################################
+driver.c tests the ability of LineStorage.c to store correctly indexed
+data, reset itself, and print out the contents of its internal data
+structure.
+
+driver.c begins testing by initializing LineStorage.  
+
+driver.c then tries to erroneously insert the empty character (i.e. "")
+into LineStorage's internal data structure.  Should it succeed an error
+has occurred so an appropriate error message is output to standard out
+and the error count, which was initially set at 0, is incremented by 
+one.*
+
+driver.c then loads all of the data from a driver.c local array into
+LineStorage's internal data structure.  For every line insert if the 
+insert fails an appropriate error message stating the actual and expected
+status of the insert is output to standard out and the error count is
+incremented by one.  Furthermore, for every line insert carry out a word
+insert for all of the words in said line of the aforementioned array.  
+If a word insert fails output an appropriate error message containing the 
+the expected and actual status of the insert to standard out and 
+increment error count by one.* 
+
+driver.c then checks to see that the number of line in the array 
+aforementioned and in LineStorage's internal data structure are the same.
+If they are not an appropriate error message containing the actual and 
+expected values is output to standard out and the error count is
+incremented by one.*
+
+driver.c then compares the number of words in every line of the above driver.c local array with the results returned by the LineStorage method LSNumWords.  If these results are not equal 
+the error count is incremented by one and an appropriate error message 
+is output to standard out stating the expected value and the actual 
+value.  In addition to this check for every line of the array
+aforementioned driver.c compares the words it contains to the words
+respective to them referenced by LineStorage.  If there is ever a 
+mismatch between these two pairs of words an error has occurred; thus
+an appropriate error message is printed to standard out and the error
+count is incremented by one for each error.*
+
+driver.c then selects several values that should be outside of the line 
+number range used by LineStorage for referencing (i.e. -1000, -1, 
+numLinesInLineStorage+1, numLinesInLineStorage+1000) and uses them, and
+when necessary in conjunction with 0 for the word number, to determine 
+whether or not the LineStorage methods LSNumWords and LSGetWord are 
+successful.  If they are successful an error has occurred so increment 
+the error count by one and output a message to standard out stating such and 
+what the actual and expected values were.*
+
+ driver.c then selects several values that should be outside of the
+ word number range used by LineStorage for indexing (i.e. -1000, -1,
+ numWordsInLineStorageforZero+1, numWordsInLineStorageforZero+1000) and  
+ uses them in conjunction with 0 for the line number to determine whether 
+ or not the LineStorage method LSGetWord is successful or not.  If this
+ method is successful then an error has occurred so increment the 
+ error count by one and output a message to standard out stating such 
+ and what the actual and expected values were.*
+ 
+ driver.c then prints out the state of LineStorage.  If this method does
+ not crash this test is considered to be a success.  Otherwise it is   
+ considered a failure.
+ 
+ driver.c then resets LineStorage and repeats all * steps.
+ 
+ If no errors are detected a message saying so is output to stanard out,
+ the error count is returned, and driver.c terminates.  Otherwise,  
+ the error count is returned and driver.c terminates.
 
 

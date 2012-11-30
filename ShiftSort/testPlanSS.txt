@@ -42,7 +42,7 @@ the actual and expected values were.
  word number range used by ShiftSort for referencing (i.e. -1000, -1,
  numWordsInShiftSortforZero+1, numWordsInShiftSortforZero+1000) and uses 
  them in conjunction with 0 for the line number to determine whether or
- not the ShiftSort methodSSGetWord is successful or not.  If this
+ not the ShiftSort method SSGetWord is successful or not.  If this
  method is successful then an error has occurred so increment the 
  error count by one and output a message to standard out stating such 
  and what the actual and expected values were.*
