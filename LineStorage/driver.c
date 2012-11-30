@@ -124,8 +124,12 @@ int main()
 	printf("run the tests once\n");
 	runTest();
 
+   printf("check that LSPrintState rus without crashing\n");   
+   LSPrintState();
+
 	printf("check that LSReset runs without crashing\n");
 	LSReset();
+
 
 	printf("run the tests again\n");
 	runTest();

@@ -2,7 +2,7 @@ INC = ../include
 
 XCFLAGS = -I$(INC)	## local C flags
 
-CC = gcc -pg $(XCFLAGS)
+CC = gcc $(XCFLAGS)
 
 driver: driver.o Output.o ShiftSort.o
 	$(CC) -o driver driver.o Output.o ShiftSort.o
@@ -31,4 +31,4 @@ ShiftSort.o: $(INC)/kwic.h $(INC)/ShiftSort.h ShiftSort.c
 	$(CC) -c $(CFLAGS) ShiftSort.c
 
 clean:
-	rm -f *.o actualOutput driver *.gcov *.gcda *.gcno
+	rm -f *.o actualOutput driver *.gcov *.gcda *.gcno gmon.out

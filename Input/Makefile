@@ -2,7 +2,7 @@ INC = ../include
 
 XCFLAGS = -I$(INC)	## extra C flags
 
-CC = gcc -pg $(XCFLAGS)
+CC = gcc $(XCFLAGS)
 
 RUNTEST = - (rm -f actualOutput/*; \
 	cd input; \
@@ -40,4 +40,4 @@ LineStorage.o: $(INC)/kwic.h $(INC)/LineStorage.h LineStorage.c
 	$(CC) -c $(CFLAGS) LineStorage.c
 
 clean:
-	rm -f *.o actualOutput/* driver  *.gcov *.gcda *.gcno
+	rm -f *.o actualOutput/* driver  *.gcov *.gcda *.gcno gmon.out
