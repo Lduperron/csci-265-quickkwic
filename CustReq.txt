@@ -1,0 +1,81 @@
+CSCI 265  Exercise 3 and Exercise 4 Fall 2012
+=============================================
+OFFICIAL  Nov 7 7:40am
+
+Team
+----
+Each team is to consist of 5 or 6  CSCI 265 students. 
+
+Mission Statement
+-----------------
+Develop quality turn-key systems that are maintainable over time.
+
+Task
+----
+Modify the kwic system.
+
+Customer Requirements
+---------------------
+1. System must continue to be of high quality and maintainable over time.
+2. Increase kwic's run-time performance significantly.
+3. Increase kwic module line-test coverage significantly.
+4. Modify kwic output as follows:
+
+Existing output format:
+=======================
+
+Input:
+======
+"The C Programming Language"
+"The Cat in the Hat"
+
+Old output format:
+==================
+C Programming Language, The
+Cat in the Hat, The
+Hat, The Cat in the
+Language, The C Programming
+Programming Language, The C
+
+New output format:
+==================
+                                    The C Programming Language
+                                    The Cat in the Hat
+                         The Cat in the Hat
+                      The C Programming Language
+                                  The C Programming Language
+
+Notice that the word that appeared in the first column of each line in
+the old format now appears starting in column 40 of the new format.
+
+The new output format is specified in Output.h.  Your task is
+to modify Output.c such that it behaves as specified in Output.h.
+
+You may assume that
+  1. You have 80 columns available to you on the output screen
+  2. No input line will exceed 40 characters
+
+Product Deliverables (Does your product meet the customer requirements?)
+------------------------------------------------------------------------
+1. Requirements Specification (1).
+2. Module Guide (1).
+3. Module Interface Specifications (1 for each module).
+4. Module Implementation (1 for each module).
+5. Module Test Plans and Test Implementations (1 for each module).
+6. System Test Plan and Test Implementation (1).
+7. Customer Demonstration Plan (1).
+
+Process Deliverables (Is your process under control?)
+-----------------------------------------------------
+1. Team Hierarchy and Conflict Resolution Mechanisms.
+2. Minutes from all meetings. 
+3. Details of Version Control.
+4. Details of Quality Control.
+5. Time Sheets.
+6. Project Debriefing Report.
+
+Due Date/Time/Place
+-------------------
+Nov 30 4pm Physics Building Room 214: A folder containing documentation
+relating to all deliverables.  Customer demonstrations  will be scheduled
+in 30 minute slots on Dec 03.

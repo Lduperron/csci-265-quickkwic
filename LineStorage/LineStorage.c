@@ -38,18 +38,18 @@ static int currentPower = 0;
 
 1. if lineCount == 0 then
 	taillinePtr == NULL
-   else
+	else
 	tailLinePtr points to the last LineNode in the array of LineNodes.
 	There are lineCount LineNodes in this list.
 
 2. for every LineNode allocated by LineStorage
 	if wordCount == 0 then
-	    headWordPtr == NULL
-	    tailWordPtr == NULL
+		 headWordPtr == NULL
+		 tailWordPtr == NULL
 	else
-	    headWordPtr points to a null-terminated linked list of WordNodes.
-	    tailWordPtr points to the last WordNode in this list.
-	    There are wordCount WordNodes in this list.
+		 headWordPtr points to a null-terminated linked list of WordNodes.
+		 tailWordPtr points to the last WordNode in this list.
+		 There are wordCount WordNodes in this list.
 
 3. For every WordNode allocated word is a null-terminated array of characters.
 
@@ -80,16 +80,16 @@ static int ipow(int base, int exp)
 	{
 		return NULL;
 	}
-   
+	
 
 	if(i >= lineNodeArraySize)
 	{
 		return NULL;
 	}
-   
-   
+	
+	
 	return lineNodeArray[i];
-   
+	
 }
 
 /*
@@ -131,10 +131,10 @@ void LSReset(void)
 			free(tmpWordPtr0);
 			tmpWordPtr0 = tmpWordPtr1;
 		}
-      
+		
 		free(lineNodeArray[i]);
 	}
-   
+	
 	free(lineNodeArray); 
 	lineNodeArray = (LineNodePtr*) malloc(sizeof(LineNodePtr));
 	lineNodeArraySize = 0;
@@ -169,10 +169,10 @@ KWStatus LSAddLine(void)
 		lineNodeArray[lineNodeArraySize] = newLinePtr;
 		lineNodeArraySize++;
 	}
-   
-   
+	
+	
 	tailLinePtr = lineNodeArray[lineNodeArraySize-1];
-   
+	
 	return KWSUCCESS;
 }
 
@@ -236,11 +236,11 @@ int LSNumWords(int lineNum)
 	if (tmpLinePtr == NULL) {
 		return KWRANGEERROR;
 	}
-   
+	
 	/* count the words in line lineNum */
 	
-   return tmpLinePtr->wordCount;
-   //return 4;
+	return tmpLinePtr->wordCount;
+	//return 4;
 }
 
 int LSNumLines(void)
@@ -254,7 +254,7 @@ void LSPrintState(void)
 	LineNodePtr tmpLinePtr;
 	WordNodePtr tmpWordPtr;
 
-   
+	
 	printf("lineCount:%d\n",lineCount);
 	for (i = 0; i < lineNodeArraySize; i++) {
 		tmpLinePtr = lineNodeArray[i];
