@@ -56,7 +56,8 @@ impMod:
 		make 'CFLAGS=$(CFLAGS)' $(MFLAGS) export ) \
 	done
 
-gdb:	kwic
+gdb:
+	$(MAKE) clean kwic 'CFLAGS= -g'
 	gdb -d ShiftSort -d WordTable -d Input -d Output \
 		-d LineStorage kwic
 
@@ -68,7 +69,7 @@ gcov:
 	done
 	cat summaryLC.txt
 
-runtest:
+runtest: kwic
 # test each module first
 	for m in $(MODULES); do \
 		( cd $$m; $(MAKE) 'CFLAGS=$(CFLAGS)' runtest; ) \
