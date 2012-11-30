@@ -20,8 +20,8 @@ void OUInit(void)
 void OUPrint(void)
 {
 	int i,j, h;
-   char temporigstring[80];
-   char tempnewstring[80];
+	char temporigstring[80];
+	char tempnewstring[80];
 
 	for (i = 0; i < SSNumLines(); i++) 
 	{

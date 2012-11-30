@@ -75,7 +75,6 @@ static int ipow(int base, int exp)
 
  LineNodePtr LSNativeGetLine(int i)
 {
-	LineNodePtr tmpLinePtr;
 
 	if (i < 0)
 	{
@@ -91,7 +90,6 @@ static int ipow(int base, int exp)
    
 	return lineNodeArray[i];
    
-	//return tmpLinePtr;
 }
 
 /*

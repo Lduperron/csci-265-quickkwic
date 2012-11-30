@@ -68,7 +68,7 @@ gcov:
 	done
 	cat summaryLC.txt
 
-runtest: kwic
+runtest:
 # test each module first
 	for m in $(MODULES); do \
 		( cd $$m; $(MAKE) 'CFLAGS=$(CFLAGS)' runtest; ) \
