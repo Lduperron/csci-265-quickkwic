@@ -1,0 +1,12 @@
+Overview of LineStorage, WordTable, ShiftSort, Output
+=======================================================================
+
+General issues:
+
+   -State invariants are no longer valid. For example, they refer to 
+    data structures which are no longer in use.
+
+   -Need to check functions and make sure ones only needed locally are
+    declared static
+
+Evan will be following up on these.
