@@ -1,0 +1,26 @@
+Technical Inspection Meeting
+========================================================================
+Nov 30, 12:00-12:30
+In attendance: Angel Aleksandrus, Lauchlin Duperron, Marius Loots,
+               Matt Cormons, Meara Kimball, Oliver Jourmel
+=====================
+
+Requirement Specifications
+   Captures system required by client:    Check
+   *Approved*
+   
+Req Specs Vs. Module Guide
+   Module guide still matches requirement specifications
+   Clear outline of modules for writing module specs
+   *Approved*
+   
+Module Guide Vs. MIS's
+   -Input, WordTable
+      Upon investigation were deemed not worth changing for optimization,
+      still match Module Guide
+      
+   -LineStorage, ShiftSort, Output
+      All alterations are contained by Module Guide's encapsulated change,
+      so they still match the Module Guide
+      
+   *Approved*
