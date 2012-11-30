@@ -1,1 +1,61 @@
-added a call to SSPrintState.. all done
+########################################################################
+#Test Plan: ShiftSort
+########################################################################
+driver.c tests the ability of ShiftSort.c to successfully shift and sort
+data input into the program, index the line and word addresses of data
+sorted by ShiftSort, and print out the contents referred to by
+ShiftSort's lineList pointer.
+
+driver.c begins testing by initializing ShiftSort.  It then invokes
+ShiftSort's ShiftSort method.
+
+driver.c then counts the number of lines in the structure pointed
+to by lineList and compares this count to the result returned by
+ShiftSort's SSNumLines method.  If these two results are not equal an
+appropriate message is printed to standard out and the error count is
+incremented.  This error count is initially set to 0.*
+
+driver.c then compares the number of words and the shift number in every 
+line of a driver.c local array containing the data as it should be 
+represented by the methods of ShiftSort and the results returned by the 
+ShiftSort methods SSNumWords and SSGetShiftNum for every respective row 
+and number type.  If either of the two pairs of results are not equal 
+the error count is incremented by one and an appropriate error message 
+is output to standard out stating the expected value and the actual 
+value.  In addition to these two checks for every line of the array
+aforementioned driver.c compares the words it contains to the words
+respective to them referenced by ShiftSort.  If there is ever a 
+mismatch between these two pairs of words an error has occurred; thus
+an appropriate error message is printed to standard out and the error
+count is incremented by one for each error.*
+
+driver.c then selects several values that should be outside of the line 
+number range used by ShiftSort for referencing (i.e. -1000, -1, 
+numLinesInShiftSort+1, numLinesInShiftSort+1000) and uses them in 
+conjunction with 0 for the word number to determine whether or not the 
+ShiftSort methods SSGetWord, SSNumWords, and SSGetShiftNum are successful.  
+If they are successful an error has occurred so increment the error 
+count by one and output a message to standard out stating such and what 
+the actual and expected values were.
+
+ driver.c then selects several values that should be outside of the
+ word number range used by ShiftSort for referencing (i.e. -1000, -1,
+ numWordsInShiftSortforZero+1, numWordsInShiftSortforZero+1000) and uses 
+ them in conjunction with 0 for the line number to determine whether or
+ not the ShiftSort methodSSGetWord is successful or not.  If this
+ method is successful then an error has occurred so increment the 
+ error count by one and output a message to standard out stating such 
+ and what the actual and expected values were.*
+ 
+ driver.c then prints out the state of ShiftSort.  If this method does
+ not crash it is considered to be a success.
+ 
+ driver.c then resets ShiftSort and calls ShiftSort's SSShiftSort
+ method.
+ 
+ driver.c then repeats all * steps.
+ 
+ If no errors are detected a message saying so is output to stanard out
+ and the error count is returned.  Otherwise, just the error count is
+ returned.
+         
