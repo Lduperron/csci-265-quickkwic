@@ -1,0 +1,39 @@
+Code Review, Date: Nov 30, 2012
+
+In attendance: Evan, Lochlin, Marius, Oliver 
+
+
+General comments
+OJ- Tabs are not very nice-
+LD- Bracket standard is awkward-
+TEAM- We will maintain the old code standard for tabs and brackets
+
+
+
+LineStorage
+
+TEAM- no major comments
+
+Input
+
+ES- Awkward spacing
+TEAM- again, the code standard
+
+Output
+
+ES- Awkward spacing
+TEAM- again, the code standard...
+
+LD- char buffers are too big, they could be reduced to 41 chars instead of 80
+TEAM- this is an acceptable memory loss, given these arrays are only used once.
+
+ShiftSort
+
+ML- clarification of bit wise expansion in ipow
+LD- is the most efficient way to calculate powers
+
+Wordtable
+
+LD- recommends more documentation regarding BS search in WTIsMember()
+TEAM- due to time restraints, we decided it was acceptable
+
